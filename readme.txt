@@ -1,4 +1,4 @@
 made this website after flame site about a week difference
 it looks pretty good in my opinion
 
-tried to recreate this template -> 
+tried to recreate this template -> https://templatemo.com/live/templatemo_610_aurum_gold
