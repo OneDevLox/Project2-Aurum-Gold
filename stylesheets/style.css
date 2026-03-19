@@ -1,0 +1,557 @@
+/* ------------------------------------------------------
+   RESET + GLOBAL
+------------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  list-style: none
+}
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* match your navbar height */
+}
+
+
+
+:root {
+  --gold: #d4af37;
+  --dark: #0b0b0b;
+  --white: #ffffff;
+  --text-color: #cfcfcf;
+  --place-holder-text: #a0a0a0;
+
+  --space-2xs: clamp(2px, 0.3vw, 4px);
+  --space-xs: clamp(4px, 0.6vw, 8px);
+  --space-sm: clamp(8px, 1vw, 14px);
+  --space-md: clamp(12px, 1.5vw, 20px);
+  --space-lg: clamp(20px, 2.5vw, 32px);
+  --space-xl: clamp(32px, 4vw, 48px);
+  --space-2xl: clamp(48px, 6vw, 80px);
+}
+
+body {
+  background: var(--dark);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  color: var(--white);
+}
+
+/* Gold Glow Background */
+
+
+/* Grain Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------
+   DESKTOP HEADER
+------------------------------------------------------ */
+header {
+  width: 100%;
+  height: 80px;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xl);
+}
+
+/* Logo */
+.logo {
+  font-family: "Cinzel", serif;
+  letter-spacing: 4px;
+  font-size: 22px;
+}
+
+.gold { color: var(--gold); text-decoration: none;}
+.white { color: var(--white); text-decoration: none; }
+
+/* Desktop Nav Links */
+.nav-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  left: -30%;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links a:hover::after {
+  width: 20%;
+}
+
+/* Buttons */
+.nav-buttons {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.btn-outline,
+.btn-gold {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-outline {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: black;
+}
+
+.btn-gold {
+  background: linear-gradient(to bottom, #d4af37, #b8962e);
+  color: black;
+  border: 1px solid #906525;
+}
+
+.btn-gold:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+  transform: translateY(-5px);
+}
+
+/* ------------------------------------------------------
+   MOBILE NAVIGATION (A1 SLIDE-IN)
+------------------------------------------------------ */
+.mobile-nav-container {
+  display: none;
+  height: 80px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 200;
+}
+
+.hamburger {
+  font-size: 1.8rem;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+/* Slide-in Drawer */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: #212121;
+  padding: var(--space-xl);
+  transition: right 0.4s ease;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  text-align: center;
+}
+.mobile-nav a{
+  border-bottom: 1px solid var(--gold);
+  margin: 0 0 5px 0;
+
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.close {
+  font-size: 2rem;
+  color: var(--gold);
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+/* Mobile Nav Links */
+.mobile-nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+/* Mobile Buttons in a Row */
+.mobile-nav .nav-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.mobile-nav .nav-buttons a {
+  flex: 1;
+  text-align: center;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 250;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ------------------------------------------------------
+   HERO SECTION
+------------------------------------------------------ */
+.home {
+  min-height: 100vh;
+  padding: var(--space-2xl) var(--space-xl);
+  width: 100%;
+  background: rgb(13, 13, 12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 140vw;
+  height: 140vh;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.18) 0%,
+    rgba(212, 175, 55, 0.10) 25%,
+    rgba(212, 175, 55, 0.04) 45%,
+    transparent 60%
+  );
+  animation: goldGlow 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.hero-contain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: var(--space-2xl);
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 600px;
+}
+
+.line1, .line2 {
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+}
+
+.line1 { margin-top: var(--space-xl); }
+.line2 { margin-top: var(--space-2xs); }
+
+/* Hero Card */
+.hero-card {
+  width: 60%;
+  background: #3830309c;
+  padding: var(--space-sm);
+  text-align: center;
+  border: #ff0000aa solid 1px;
+  font-weight: 500;
+  color: var(--text-color);
+  letter-spacing: 0.7px;
+  box-shadow: 0 0 15px rgb(37, 22, 22);
+  border-radius: 2px;
+  font-size: 0.8rem;
+}
+
+/* Hero Text */
+.hero-main-txt {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-gold {
+  color: var(--gold);
+  font-family: "Cinzel", serif;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+  font-style: oblique 90deg;
+}
+
+.hero-p {
+  max-width: 500px;
+  line-height: 1.6;
+  color: var(--place-holder-text);
+}
+
+.hero-btns {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 100%;
+  color: var(--place-holder-text);
+  font-size: 1.2rem;
+}
+
+.top {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 300;
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+/* ------------------------------------------------------
+   MARKET PANEL
+------------------------------------------------------ */
+.market-panel {
+  background: #212121;
+  padding: var(--space-xl);
+  border-radius: 6px;
+
+  /* Gold outline */
+  border: 1px solid rgba(212, 175, 55, 0.45);
+
+  /* Outer glow */
+  box-shadow: 0 0 15px var(--dark);
+  min-width: 480px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  z-index: 1;
+  position: relative;
+}
+
+
+.market-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 12px rgba(212, 175, 55, 0.15),
+    inset 0 0 25px rgba(212, 175, 55, 0.08);
+}
+
+
+
+.price-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Cinzel", serif;
+  color: var(--place-holder-text);
+  font-size: 18px;
+}
+
+.price-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-value {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 700;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  color: var(--gold);
+  padding: var(--space-sm);
+  font-size: clamp(1rem, 4vw, 2rem);
+}
+
+.price-change {
+  background: #7e464645;
+  padding: var(--space-sm);
+  font-size: clamp(.2rem, 4vw, 1.2rem);
+}
+
+.price-metals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl) var(--space-2xl);
+  margin-top: var(--space-xl);
+  width: 100%;
+  padding: var(--space-md);
+}
+
+.metal-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: #00000092;
+  border: 1px solid rgb(122, 54, 54);
+  transition: border .3s ease;
+}
+
+.metal-item:hover {
+  border: 1px solid var(--gold);
+}
+
+/* ------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------ */
+@media (max-width: 800px) {
+
+  header { display: none; }
+
+  .mobile-nav-container {
+    display: flex;
+  }
+
+  .hero-contain {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .hero-info {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-md);
+  }
+
+  .ratings {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .market-panel {
+    width: 100%;
+    min-width: unset;
+    padding: var(--space-lg);
+  }
+
+  .price-metals {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: 0;
+  }
+
+  .hero-card {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 300px) {
+
+  .mobile-nav-container {
+    padding: 0 var(--space-xs);
+  }
+
+  .logo {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .hero-main-txt {
+    font-size: clamp(1.2rem, 6vw, 1.6rem);
+  }
+
+  .hero-p {
+    font-size: 0.8rem;
+    max-width: 95%;
+  }
+
+  .btn-outline,
+  .btn-gold {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 11px;
+  }
+
+  .hero-card {
+    font-size: 0.65rem;
+    padding: var(--space-xs);
+  }
+
+  .ratings {
+    font-size: 0.9rem;
+  }
+
+  .market-panel {
+    padding: var(--space-sm);
+  }
+
+  .metal-item {
+    padding: var(--space-sm);
+  }
+}

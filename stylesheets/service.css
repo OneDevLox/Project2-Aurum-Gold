@@ -1,0 +1,177 @@
+:root {
+  --gold: #d4af37;
+  --dark: #0b0b0b;
+  --white: #ffffff;
+  --text-color: #cfcfcf;
+  --place-holder-text: #a0a0a0;
+
+  --space-2xs: clamp(2px, 0.3vw, 4px);
+  --space-xs: clamp(4px, 0.6vw, 8px);
+  --space-sm: clamp(8px, 1vw, 14px);
+  --space-md: clamp(12px, 1.5vw, 20px);
+  --space-lg: clamp(20px, 2.5vw, 32px);
+  --space-xl: clamp(32px, 4vw, 48px);
+  --space-2xl: clamp(48px, 6vw, 80px);
+  --space-2lg: clamp(80px, 8vw, 120px);
+}
+
+/* ============================
+   SERVICES SECTION
+============================ */
+
+.service {
+  min-height: auto;
+  padding: var(--space-2xl);
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* stack header + grid */
+  align-items: center;    /* center horizontally */
+  background: #141212;
+  border-top: 1px solid #a0a0a015;
+}
+
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.section-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 200;
+  margin-bottom: 15px;
+  font-family: "Cinzel", serif;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: var(--place-holder-text);
+  opacity: 0.8;
+}
+
+/* ============================
+   SERVICE CARDS
+============================ */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 35px;
+  text-align: center;
+}
+
+.service-card {
+  background: #080808;
+  min-height: 280px;
+  padding: var(--space-lg);
+  border-radius: 2px;
+  border: 1px solid #6f6e6e4a;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  background-color: red;
+  transition: all 0.3s ease;
+}
+.service-card:hover::after {
+  width: 100%;
+  background-color: var(--gold);
+  height: 3px;
+  transform: translateX(-50%) scaleX(1);
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  background: #ffc40027;
+}
+
+
+
+/* ============================
+   ICON + HOVER ANIMATION
+============================ */
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.06);
+  margin: 0 auto var(--space-md);
+  transition: all 0.3s ease;
+}
+
+/* Only the hovered card’s icon changes */
+.service-card:hover .service-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Optional: make the icon stroke turn black on gold */
+.service-card:hover .service-icon svg {
+  stroke: #000;
+}
+.service-title{
+  font-family: "Bodoni Moda", serif;
+  letter-spacing: 1px;
+  font-weight: 100;
+  margin-bottom: var(--space-sm);
+}
+.service-desc{
+    font-size: var(--space-sm);
+    color: var(--place-holder-text);
+}
+/* ============================
+   RESPONSIVE GRID
+============================ */
+
+/* Large tablets / small laptops */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .service-desc {
+    font-size: 20px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-desc {
+    font-size: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-desc {
+    font-size: 20px;
+  }
+}

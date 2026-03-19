@@ -1,0 +1,75 @@
+:root {
+  --gold: #d4af37;
+  --dark: #0b0b0b;
+  --white: #ffffff;
+  --text-color: #cfcfcf;
+  --place-holder-text: #a0a0a0;
+
+  --space-2xs: clamp(2px, 0.3vw, 4px);
+  --space-xs: clamp(4px, 0.6vw, 8px);
+  --space-sm: clamp(8px, 1vw, 14px);
+  --space-md: clamp(12px, 1.5vw, 20px);
+  --space-lg: clamp(20px, 2.5vw, 32px);
+  --space-xl: clamp(32px, 4vw, 48px);
+  --space-2xl: clamp(48px, 6vw, 80px);
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  gap: 80px;
+  padding: 80px 6%;
+  border-top: 1px solid #ffffff10;
+  flex-wrap: wrap;
+}
+.footer-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    height: auto;
+    align-items: center;
+    justify-items: center;
+}
+.footer-title{
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 2px;
+  font-weight: 200;
+  font-size: var(--space-md);
+}
+
+.footer-links li{
+    margin-top: var(--space-md);
+    transition: all .3s ease;
+}
+.footer-links li:hover{
+    transform: translateX(10%);
+}
+.footer-links li a{
+    color: #cfcfcf6a;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+.footer-links li a:hover{
+    color: var(--gold);
+}
+
+/* Large tablets / small laptops */
+@media (max-width: 1200px) {
+  .footer-grid{
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .footer-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .footer-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
