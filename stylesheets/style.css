@@ -341,7 +341,6 @@ header {
   color: var(--gold);
   font-family: "Cinzel", serif;
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
-  font-style: oblique 90deg;
 }
 
 .hero-p {
