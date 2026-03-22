@@ -1,4 +1,4 @@
-**Visit it here: https://onedevlox.github.io/Project2-Aurum-Gold/**
+<h2>Visit it here: https://onedevlox.github.io/Project2-Aurum-Gold/</h2>
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
